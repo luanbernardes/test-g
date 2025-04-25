@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
-import MainTemplate from '@/templates/main.template';
+import LoginTemplate from '@/templates/login.template';
 import { PostSignInBody } from '@/@types/reqres';
 import { useSignIn } from '@/hooks/sign-in/sign-in';
 import { useNavigate } from 'react-router-dom';
@@ -33,10 +33,10 @@ const SignInContainer = () => {
   }, [navigate, loading, error, data?.token]);
 
   return (
-    <MainTemplate>
-      <Typography variant="h4" gutterBottom>
-        Sign In - Login
-      </Typography>
+    <LoginTemplate>
+      <Box mb={5}>
+        <Typography variant="h4">Sign in</Typography>
+      </Box>
 
       <form onSubmit={login}>
         <Box mb={2}>
@@ -77,7 +77,7 @@ const SignInContainer = () => {
           login
         </Button>
       </form>
-    </MainTemplate>
+    </LoginTemplate>
   );
 };
 

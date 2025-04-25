@@ -19,6 +19,7 @@ export const useSignIn = () => {
         const response = await reqresService.postSignIn(body);
         setData(response);
       } catch {
+        setData(null);
         setError('Failed to login');
       }
     });
