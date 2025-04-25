@@ -35,3 +35,7 @@ export interface PostSignUpResponse {
 export interface PostSignUpFormData extends PostSignUpBody {
   confirmPassword: string;
 }
+
+export enum LocalStorageKeys {
+  token = '1global-token'
+}

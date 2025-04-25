@@ -17,6 +17,13 @@ export const useSignIn = () => {
     startTransition(async () => {
       try {
         const response = await reqresService.postSignIn(body);
+        if (response?.body) {
+          const r: PostSignInResponse = {
+            id: response.body.id,
+            token: response.body.token
+          };
+          await reqresService.postTokenLocalStorage(r);
+        }
         setData(response);
       } catch {
         setData(null);
