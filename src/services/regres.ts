@@ -11,11 +11,24 @@ export class RequesService {
   }
 
   async postSignIn(body: PostSignInBody): Promise<HttpResponse<PostSignInResponse>> {
+    // TODO - Mock
+    return Promise.resolve({
+      statusCode: 200,
+      body: {
+        id: 1,
+        token: 'token-123-456'
+      }
+    });
+
     const httpRequest: HttpRequest = {
       url: `${baseUrl}/api/login`,
       method: 'get',
-      body
+      body,
+      headers: {
+        'x-api-key': apiKey
+      }
     };
+
     return this.httpClient.request(httpRequest);
   }
 
