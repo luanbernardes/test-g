@@ -10,3 +10,9 @@ using `ASDF`:
 
 # Commands
 - To run project: `pnpm dev`
+
+## APIs
+- All requests is based on: https://reqres.in/
+  - success: 
+    - email: `eve.holt@reqres.in`
+    - password: `cityslicka`
