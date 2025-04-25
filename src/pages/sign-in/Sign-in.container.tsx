@@ -41,6 +41,7 @@ const SignInContainer = () => {
       <form onSubmit={login}>
         <Box mb={2}>
           <TextField
+            fullWidth
             type="email"
             label="email"
             name="email"
@@ -54,6 +55,7 @@ const SignInContainer = () => {
 
         <Box mb={2}>
           <TextField
+            fullWidth
             type="password"
             label="password"
             name="password"
@@ -74,7 +76,7 @@ const SignInContainer = () => {
         )}
 
         <Button variant="outlined" type="submit" loadingPosition="end" loading={loading}>
-          login
+          log in
         </Button>
       </form>
     </LoginTemplate>
