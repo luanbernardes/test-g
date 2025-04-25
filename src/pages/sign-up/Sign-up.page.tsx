@@ -1,12 +1,8 @@
 import React from 'react';
-import MainTemplate from '@/templates/main.template';
+import SignUpContainer from '@/pages/sign-up/Sign-up.container';
 
 const SignUpPage = () => {
-  return (
-    <MainTemplate>
-      <h1>Sign Up</h1>
-    </MainTemplate>
-  );
+  return <SignUpContainer />;
 };
 
 export default SignUpPage;

@@ -19,5 +19,19 @@ export interface PostSignInBody {
   password: string;
 }
 export interface PostSignInResponse {
+  id: number;
   token: string;
+}
+
+export interface PostSignUpBody {
+  email: string;
+  password: string;
+}
+export interface PostSignUpResponse {
+  id: number;
+  token: string;
+}
+
+export interface PostSignUpFormData extends PostSignUpBody {
+  confirmPassword: string;
 }
