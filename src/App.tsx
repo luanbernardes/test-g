@@ -1,7 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/home/Home.page';
-import CssBaseline from '@mui/material/CssBaseline';
 import './App.css';
+import CssBaseline from '@mui/material/CssBaseline';
+import HomePage from './pages/home/Home.page';
+import SignInPage from '@/pages/sign-in/Sign-in.page';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/sign-in" element={<SignInPage />} />
       </Routes>
     </>
   );
