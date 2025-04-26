@@ -14,11 +14,12 @@ import { useUser } from '@/hooks/user/user';
 import { useLogout } from '@/hooks/sign-up/logout';
 import UserComponent from '@/pages/home/User.component';
 import { useNavigate } from 'react-router-dom';
+import { User } from '@/@types/reqres';
 
 const HomeContainer = () => {
-  const { data: userData } = useUser(2);
+  const { data: userData } = useUser(1);
   const { logout } = useLogout();
-  const { error, loading, data, pageSize, goToPage } = useUsers();
+  const { error, loading, data, pageSize, goToPage, update } = useUsers();
   const navigate = useNavigate();
 
   function paginationChange(_: React.ChangeEvent<unknown>, value: number) {
@@ -27,6 +28,9 @@ const HomeContainer = () => {
   function handleLogout() {
     logout();
     navigate('/sign-in');
+  }
+  function userChange(newValue: User) {
+    update(newValue);
   }
 
   return (
@@ -65,7 +69,7 @@ const HomeContainer = () => {
               <>
                 {data.map((user) => (
                   <div key={user.id}>
-                    <UserComponent user={user} />
+                    <UserComponent user={user} userChange={userChange} />
                   </div>
                 ))}
               </>

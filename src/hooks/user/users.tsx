@@ -1,6 +1,6 @@
 import { useEffect, useState, useTransition } from 'react';
 import { reqresService } from '@/services';
-import { GetUsersResponse } from '@/@types/reqres';
+import { GetUsersResponse, User } from '@/@types/reqres';
 import { HttpResponse } from '@/data/protocols/http';
 
 export const useUsers = () => {
@@ -36,11 +36,31 @@ export const useUsers = () => {
     setPage(page);
   }
 
+  function update(user: User) {
+    const newData = data?.body?.data.map((item) => {
+      if (item.id === user.id) {
+        return { ...item, ...user };
+      }
+      return item;
+    });
+
+    if (newData && data?.body) {
+      setData({
+        ...data,
+        body: {
+          ...data?.body,
+          data: newData
+        }
+      });
+    }
+  }
+
   return {
     data: data?.body?.data,
     pageSize: data?.body?.total_pages,
     loading,
     error,
-    goToPage
+    goToPage,
+    update
   };
 };
