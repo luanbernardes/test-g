@@ -9,7 +9,6 @@ export class ThemeService {
     this.httpClient = httpClient;
   }
   async postThemeLocalStorage(theme: themeEnum): Promise<HttpResponse<themeResponse>> {
-    console.log({ theme });
     const httpRequest: HttpRequest = {
       url: LocalStorageKeys.theme,
       method: 'post',
