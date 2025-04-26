@@ -1,5 +1,10 @@
 # test-g
 
+## Run With Docker
+- `docker compose build`
+- `docker compose up` to run the project
+- Access: http://localhost:3000/
+
 
 ## Run with ASDF
 using `ASDF`:

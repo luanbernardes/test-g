@@ -1,0 +1,15 @@
+services:
+
+  frontend:
+    container_name: 1global-test
+    build: .
+    volumes:
+      - './:/app'
+      - '/app/node_modules'
+    ports:
+      - 3000:5173
+    stdin_open: true
+    environment:
+      - VITE_REQRES_API=https://reqres.in
+      - VITE_REQRES_API_KEY=reqres-free-v1
+    command: pnpm dev-host
