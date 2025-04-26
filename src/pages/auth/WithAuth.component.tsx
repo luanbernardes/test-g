@@ -16,7 +16,7 @@ const WithAuth: React.FC<PropsWithAuth> = ({ children }) => {
   }
 
   if (!loading && !data) {
-    navigate('/sign-up');
+    navigate('/sign-in');
     return <>not logged</>;
   }
 
