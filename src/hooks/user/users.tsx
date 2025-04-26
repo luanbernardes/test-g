@@ -55,12 +55,27 @@ export const useUsers = () => {
     }
   }
 
+  function deleteUser(userId: number) {
+    const newData = data?.body?.data.filter((item) => item.id !== userId);
+
+    if (newData && data?.body) {
+      setData({
+        ...data,
+        body: {
+          ...data?.body,
+          data: newData
+        }
+      });
+    }
+  }
+
   return {
     data: data?.body?.data,
     pageSize: data?.body?.total_pages,
     loading,
     error,
     goToPage,
-    update
+    update,
+    deleteUser
   };
 };

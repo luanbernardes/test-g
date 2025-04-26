@@ -19,7 +19,7 @@ import { User } from '@/@types/reqres';
 const HomeContainer = () => {
   const { data: userData } = useUser(1);
   const { logout } = useLogout();
-  const { error, loading, data, pageSize, goToPage, update } = useUsers();
+  const { error, loading, data, pageSize, goToPage, update, deleteUser } = useUsers();
   const navigate = useNavigate();
 
   function paginationChange(_: React.ChangeEvent<unknown>, value: number) {
@@ -31,6 +31,9 @@ const HomeContainer = () => {
   }
   function userChange(newValue: User) {
     update(newValue);
+  }
+  function deleteUserHandle(userId: number) {
+    deleteUser(userId);
   }
 
   return (
@@ -69,7 +72,11 @@ const HomeContainer = () => {
               <>
                 {data.map((user) => (
                   <div key={user.id}>
-                    <UserComponent user={user} userChange={userChange} />
+                    <UserComponent
+                      user={user}
+                      userChange={userChange}
+                      deleteUser={deleteUserHandle}
+                    />
                   </div>
                 ))}
               </>

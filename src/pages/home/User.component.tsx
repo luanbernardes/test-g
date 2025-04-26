@@ -15,9 +15,10 @@ import { useState } from 'react';
 interface UserComponentProps {
   user: User;
   userChange: (user: User) => void;
+  deleteUser: (id: number) => void;
 }
 
-export default function UserComponent({ user, userChange }: UserComponentProps) {
+export default function UserComponent({ user, userChange, deleteUser }: UserComponentProps) {
   const [isEditing, setIsEditing] = useState(false);
 
   const [formData, setFormData] = useState<User>({
@@ -122,6 +123,7 @@ export default function UserComponent({ user, userChange }: UserComponentProps) 
                   </Grid2>
 
                   <Grid2>
+                    <Button onClick={() => deleteUser(user.id)}>delete</Button>
                     <Button onClick={saveChanges}>save</Button>
                   </Grid2>
                 </Grid2>
