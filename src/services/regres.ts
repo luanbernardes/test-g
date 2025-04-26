@@ -33,11 +33,11 @@ export class RequesService {
     return this.httpClient.request(httpRequest);
   }
 
-  async postTokenLocalStorage(body: PostSignUpResponse): Promise<HttpResponse<PostSignUpResponse>> {
+  async postTokenLocalStorage(token: string): Promise<HttpResponse<PostSignUpResponse>> {
     const httpRequest: HttpRequest = {
       url: LocalStorageKeys.token,
       method: 'post',
-      body
+      body: { token }
     };
 
     return this.httpClientLocalStorage.request(httpRequest);
@@ -52,18 +52,9 @@ export class RequesService {
   }
 
   async postSignIn(body: PostSignInBody): Promise<HttpResponse<PostSignInResponse>> {
-    // TODO - Mock
-    return Promise.resolve({
-      statusCode: 200,
-      body: {
-        id: 1,
-        token: 'token-123-456'
-      }
-    });
-
     const httpRequest: HttpRequest = {
       url: `${baseUrl}/api/login`,
-      method: 'get',
+      method: 'post',
       body,
       headers: {
         'x-api-key': apiKey

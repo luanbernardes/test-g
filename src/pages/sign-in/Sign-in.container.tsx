@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SignInContainer = () => {
   const navigate = useNavigate();
-  const { postLogin, loading, error, data } = useSignIn();
+  const { postSignIn, loading, error, data } = useSignIn();
   const [formData, setFormData] = useState<PostSignInBody>({
     email: '',
     password: ''
@@ -23,7 +23,7 @@ const SignInContainer = () => {
 
   function login(e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-    postLogin(formData);
+    postSignIn(formData);
   }
 
   useEffect(() => {

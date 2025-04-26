@@ -19,7 +19,6 @@ export interface PostSignInBody {
   password: string;
 }
 export interface PostSignInResponse {
-  id: number;
   token: string;
 }
 

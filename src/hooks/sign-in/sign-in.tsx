@@ -18,12 +18,9 @@ export const useSignIn = () => {
       try {
         const response = await reqresService.postSignIn(body);
         if (response?.body) {
-          const r: PostSignInResponse = {
-            id: response.body.id,
-            token: response.body.token
-          };
-          await reqresService.postTokenLocalStorage(r);
+          await reqresService.postTokenLocalStorage(response.body.token);
         }
+        setError(null);
         setData(response);
       } catch {
         setData(null);
@@ -36,6 +33,6 @@ export const useSignIn = () => {
     data: data?.body,
     loading,
     error,
-    postLogin: postSignIn
+    postSignIn
   };
 };
