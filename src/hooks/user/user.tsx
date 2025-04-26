@@ -11,7 +11,7 @@ export const useUser = (userId: number) => {
   useEffect(() => {
     startTransition(async () => {
       const token = await reqresService.getTokenLocalStorage();
-      if (!token.body) {
+      if (!token.body?.token) {
         setError('No token found');
         return;
       }

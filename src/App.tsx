@@ -27,7 +27,7 @@ function App() {
       <CssBaseline />
 
       <div style={{ position: 'fixed', bottom: '8px', right: '8px' }}>
-        <Button variant="contained" onClick={toggleTheme}>
+        <Button variant="outlined" size="small" onClick={toggleTheme}>
           Toggle Theme
         </Button>
       </div>

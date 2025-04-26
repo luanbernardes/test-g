@@ -26,6 +26,16 @@ export interface GetUserResponse {
     text: string;
   };
 }
+export interface PostUserBody {
+  name: string;
+  job: string;
+}
+export interface PostUserResponse {
+  name: string;
+  job: string;
+  id: string;
+  createdAt: string;
+}
 
 export interface PostSignInBody {
   email: string;

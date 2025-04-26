@@ -20,7 +20,6 @@ interface UserComponentProps {
 
 export default function UserComponent({ user, userChange, deleteUser }: UserComponentProps) {
   const [isEditing, setIsEditing] = useState(false);
-
   const [formData, setFormData] = useState<User>({
     id: user.id,
     first_name: user.first_name,

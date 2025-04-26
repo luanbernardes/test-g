@@ -7,7 +7,9 @@ import {
   PostSignInBody,
   PostSignInResponse,
   PostSignUpBody,
-  PostSignUpResponse
+  PostSignUpResponse,
+  PostUserBody,
+  PostUserResponse
 } from '@/@types/reqres';
 
 const baseUrl = import.meta.env.VITE_REQRES_API;
@@ -94,6 +96,19 @@ export class RequesService {
         'x-api-key': apiKey,
         token
       }
+    };
+    return this.httpClient.request(httpRequest);
+  }
+
+  async postUser(token: string, user: PostUserBody): Promise<HttpResponse<PostUserResponse>> {
+    const httpRequest: HttpRequest = {
+      url: `${baseUrl}/api/users`,
+      method: 'post',
+      headers: {
+        'x-api-key': apiKey,
+        token
+      },
+      body: user
     };
     return this.httpClient.request(httpRequest);
   }
