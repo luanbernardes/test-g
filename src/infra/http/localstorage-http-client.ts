@@ -5,7 +5,7 @@ export class LocalstorageHttpClient implements HttpClient {
   async request(data: HttpRequest): Promise<HttpResponse> {
     if (data.method === 'post') {
       const key = data.url;
-      localStorage.setItem(key, JSON.stringify(data.body?.token));
+      localStorage.setItem(key, JSON.stringify(data.body));
 
       return Promise.resolve({
         statusCode: 200,
