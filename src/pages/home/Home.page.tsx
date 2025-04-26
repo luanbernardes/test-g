@@ -1,7 +1,7 @@
-import MainTemplate from '@/templates/main.template';
+import HomeContainer from '@/pages/home/Home.container';
 
 const HomePage = () => {
-  return <MainTemplate>Hello </MainTemplate>;
+  return <HomeContainer />;
 };
 
 export default HomePage;

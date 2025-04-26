@@ -13,6 +13,19 @@ export interface GetUsersResponse {
   total_pages: number;
   data: User[];
 }
+export interface GetUserResponse {
+  data: {
+    id: number;
+    email: string;
+    first_name: string;
+    last_name: string;
+    avatar: string;
+  };
+  support: {
+    url: string;
+    text: string;
+  };
+}
 
 export interface PostSignInBody {
   email: string;

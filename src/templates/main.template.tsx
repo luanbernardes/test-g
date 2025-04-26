@@ -7,7 +7,7 @@ interface MainTemplateProps {
 
 const MainTemplate = ({ children }: MainTemplateProps) => {
   return (
-    <Grid2 container spacing={3} direction={'column'} height={'100vh'}>
+    <Grid2 container spacing={3} pt={3} direction={'column'} height={'100vh'}>
       <Grid2>
         <Container>{children}</Container>
       </Grid2>

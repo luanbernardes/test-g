@@ -1,5 +1,6 @@
 import { HttpClient, HttpRequest, HttpResponse } from '@/data/protocols/http';
 import {
+  GetUserResponse,
   GetUsersResponse,
   LocalStorageKeys,
   LogoutResponse,
@@ -73,10 +74,26 @@ export class RequesService {
     return this.httpClient.request(httpRequest);
   }
 
-  async getUsers(): Promise<HttpResponse<GetUsersResponse>> {
+  async getUsers(token: string, page: number): Promise<HttpResponse<GetUsersResponse>> {
     const httpRequest: HttpRequest = {
-      url: `${baseUrl}/api/users`,
-      method: 'get'
+      url: `${baseUrl}/api/users?page${page}`,
+      method: 'get',
+      headers: {
+        'x-api-key': apiKey,
+        token
+      }
+    };
+    return this.httpClient.request(httpRequest);
+  }
+
+  async getUser(token: string, userId: number): Promise<HttpResponse<GetUserResponse>> {
+    const httpRequest: HttpRequest = {
+      url: `${baseUrl}/api/users/${userId}`,
+      method: 'get',
+      headers: {
+        'x-api-key': apiKey,
+        token
+      }
     };
     return this.httpClient.request(httpRequest);
   }
