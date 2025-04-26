@@ -49,7 +49,8 @@ export interface PostSignUpFormData extends PostSignUpBody {
 }
 
 export enum LocalStorageKeys {
-  token = '1global-token'
+  token = '1global-token',
+  theme = '1global-theme-selected'
 }
 
 export interface LogoutResponse {

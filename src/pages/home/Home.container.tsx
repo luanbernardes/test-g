@@ -51,6 +51,7 @@ const HomeContainer = () => {
           <button onClick={handleLogout}>sair</button>
         </Grid2>
       )}
+
       <Card>
         <CardContent>
           <div style={{ minHeight: '580px' }}>
