@@ -1,4 +1,5 @@
 import { HttpClient, HttpRequest, HttpResponse } from '@/data/protocols/http';
+import { LogoutResponse } from '@/@types/reqres';
 
 export class LocalstorageHttpClient implements HttpClient {
   async request(data: HttpRequest): Promise<HttpResponse> {
@@ -22,6 +23,20 @@ export class LocalstorageHttpClient implements HttpClient {
           body: JSON.parse(response)
         });
       }
+    }
+
+    if (data.method === 'delete') {
+      const key = data.url;
+      const response: LogoutResponse = {
+        message: 'success from localStorage'
+      };
+
+      localStorage.removeItem(key);
+
+      return Promise.resolve({
+        statusCode: 200,
+        body: response
+      });
     }
 
     return Promise.reject({
