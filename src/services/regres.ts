@@ -2,6 +2,7 @@ import { HttpClient, HttpRequest, HttpResponse } from '@/data/protocols/http';
 import {
   GetUsersResponse,
   LocalStorageKeys,
+  LogoutResponse,
   PostSignInBody,
   PostSignInResponse,
   PostSignUpBody,
@@ -46,6 +47,14 @@ export class RequesService {
     const httpRequest: HttpRequest = {
       url: LocalStorageKeys.token,
       method: 'get'
+    };
+
+    return this.httpClientLocalStorage.request(httpRequest);
+  }
+  async deleteTokenLocalStorage(): Promise<HttpResponse<LogoutResponse>> {
+    const httpRequest: HttpRequest = {
+      url: LocalStorageKeys.token,
+      method: 'delete'
     };
 
     return this.httpClientLocalStorage.request(httpRequest);
