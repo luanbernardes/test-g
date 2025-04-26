@@ -1,6 +1,7 @@
 import MainTemplate from '@/templates/main.template';
 import {
   Box,
+  Button,
   Card,
   CardContent,
   CircularProgress,
@@ -48,7 +49,7 @@ const HomeContainer = () => {
             Hello {userData.first_name} {userData.last_name}!
           </Typography>
 
-          <button onClick={handleLogout}>sair</button>
+          <Button onClick={handleLogout}>logout</Button>
         </Grid2>
       )}
 
