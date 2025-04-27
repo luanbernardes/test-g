@@ -63,14 +63,20 @@ export default function AddNewUserComponent() {
 
         {data && (
           <Box mb={2}>
-            <Typography variant="body1" color={'success'}>
+            <Typography component={'h5'} variant="body1" color={'success'}>
               User added successfully!
             </Typography>
           </Box>
         )}
 
         <Grid2 container justifyContent={'end'}>
-          <Button variant="outlined" type="submit" loadingPosition="end" loading={loading}>
+          <Button
+            variant="outlined"
+            type="submit"
+            loadingPosition="end"
+            aria-label={'submit-new-user'}
+            loading={loading}
+          >
             Add new user
           </Button>
         </Grid2>

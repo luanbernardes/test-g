@@ -47,11 +47,21 @@ export default function UserComponent({ user, userChange, deleteUser }: UserComp
         alignItems="flex-start"
         secondaryAction={
           <>
-            <IconButton aria-label="delete" size="small" onClick={() => setIsEditing(!isEditing)}>
-              {!isEditing && <EditIcon fontSize="inherit" />}
+            {!isEditing && (
+              <IconButton aria-label="edit" size="small" onClick={() => setIsEditing(!isEditing)}>
+                <EditIcon fontSize="inherit" />
+              </IconButton>
+            )}
 
-              {isEditing && <CloseIcon fontSize="inherit" />}
-            </IconButton>
+            {isEditing && (
+              <IconButton
+                aria-label="edit-close"
+                size="small"
+                onClick={() => setIsEditing(!isEditing)}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            )}
           </>
         }
       >
@@ -61,7 +71,11 @@ export default function UserComponent({ user, userChange, deleteUser }: UserComp
 
         {!isEditing && (
           <ListItemText
-            primary={`${user.first_name} ${user.last_name}`}
+            primary={
+              <Typography component="h3" variant="h6">
+                {`${user.first_name} ${user.last_name}`}
+              </Typography>
+            }
             secondary={
               <React.Fragment>
                 <Typography
@@ -122,8 +136,12 @@ export default function UserComponent({ user, userChange, deleteUser }: UserComp
                   </Grid2>
 
                   <Grid2>
-                    <Button onClick={() => deleteUser(user.id)}>delete</Button>
-                    <Button onClick={saveChanges}>save</Button>
+                    <Button onClick={() => deleteUser(user.id)} aria-label="delete">
+                      delete
+                    </Button>
+                    <Button onClick={saveChanges} aria-label="save">
+                      save
+                    </Button>
                   </Grid2>
                 </Grid2>
               </React.Fragment>

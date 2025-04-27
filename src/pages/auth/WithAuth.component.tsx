@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHasAuth } from '@/hooks/auth/hasAuth';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import LoadingPage from '@/pages/loading/Loading.page';
 
 interface PropsWithAuth {
@@ -9,18 +9,14 @@ interface PropsWithAuth {
 
 const WithAuth: React.FC<PropsWithAuth> = ({ children }) => {
   const { data, loading } = useHasAuth();
-  const navigate = useNavigate();
 
-  if (loading) {
-    return <LoadingPage />;
-  }
-
-  if (!loading && !data) {
-    navigate('/sign-in');
-    return <>not logged</>;
-  }
-
-  return <>{children}</>;
+  return (
+    <>
+      <>{loading && <LoadingPage />}</>
+      <>{!loading && !data?.token && <Navigate to="/sign-in" />}</>
+      <>{!loading && data?.token && <>{children}</>}</>
+    </>
+  );
 };
 
 export default WithAuth;

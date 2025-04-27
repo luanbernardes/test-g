@@ -49,7 +49,9 @@ const HomeContainer = () => {
   return (
     <MainTemplate>
       <Box mb={4}>
-        <Typography variant="h4">Dashboard</Typography>
+        <Typography component="h1" variant="h4">
+          Dashboard
+        </Typography>
       </Box>
 
       {userData && (
@@ -103,7 +105,7 @@ const HomeContainer = () => {
       </Card>
 
       <Grid2 container justifyContent={'end'} paddingTop={2}>
-        <Button variant="contained" onClick={addUserHandle}>
+        <Button variant="contained" onClick={addUserHandle} aria-label="add-new-user">
           Add new user
         </Button>
       </Grid2>
