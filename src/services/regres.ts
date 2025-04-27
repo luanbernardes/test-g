@@ -27,7 +27,7 @@ export class RequesService {
   async postSignUp(body: PostSignUpBody): Promise<HttpResponse<PostSignUpResponse>> {
     const httpRequest: HttpRequest = {
       url: `${baseUrl}/api/register`,
-      method: 'get',
+      method: 'post',
       body,
       headers: {
         'x-api-key': apiKey

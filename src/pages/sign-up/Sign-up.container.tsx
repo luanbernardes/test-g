@@ -84,13 +84,19 @@ const SignUpContainer = () => {
 
         {error && (
           <Box mb={2}>
-            <Typography variant="body1" color="error">
+            <Typography component={'h5'} variant="body1" color="error">
               {error}
             </Typography>
           </Box>
         )}
 
-        <Button variant="outlined" type="submit" loadingPosition="end" loading={loading}>
+        <Button
+          variant="outlined"
+          type="submit"
+          loadingPosition="end"
+          aria-label={'sign-up'}
+          loading={loading}
+        >
           sign up
         </Button>
       </form>

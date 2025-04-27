@@ -27,6 +27,10 @@ export const useSignUp = () => {
         };
         const response = await reqresService.postSignUp(newBody);
 
+        if (response.body?.token) {
+          await reqresService.postTokenLocalStorage(response.body.token);
+        }
+
         setError(null);
         setData(response);
       } catch {

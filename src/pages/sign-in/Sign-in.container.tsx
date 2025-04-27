@@ -69,7 +69,7 @@ const SignInContainer = () => {
 
         {error && (
           <Box mb={2}>
-            <Typography variant="body1" color="error">
+            <Typography component={'h5'} variant="body1" color="error">
               {error}
             </Typography>
           </Box>

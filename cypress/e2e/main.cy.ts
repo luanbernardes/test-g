@@ -2,24 +2,30 @@ Cypress.on('uncaught:exception', () => {
   return false;
 });
 
-const email = 'eve.holt@reqres.in';
-const password = 'cityslicka';
-
 function signIn() {
+  const email = 'eve.holt@reqres.in';
+  const password = 'cityslicka';
+
   cy.get('body').should('exist');
 
   // Redirect to Signin without token logged
   cy.location('pathname', { timeout: 2000 }).should('eq', '/sign-in');
   cy.url().then((url) => console.log('Current URL:', url));
 
-  // sign in
-  cy.get('input[name="email"]').type(email);
+  // sign in with wrong email
+  cy.get('input[name="email"]').type('error@error.com');
   cy.get('input[name="password"]').type(password);
+  cy.contains('button', 'log in').click();
+  cy.get('h5').contains('Failed to login').should('exist');
+
+  cy.get('input[name="email"]').clear();
+  cy.get('input[name="email"]').type(email);
+
   cy.contains('button', 'log in').click();
 }
 
 describe('Main spec', () => {
-  before(() => {
+  beforeEach(() => {
     cy.clearCookies();
     cy.clearLocalStorage();
   });
@@ -62,5 +68,33 @@ describe('Main spec', () => {
 
     // logout
     cy.get('button').contains('logout').click();
+  });
+
+  it('Sign up', () => {
+    const newUser = {
+      email: 'eve.holt@reqres.in',
+      password: 'pistol'
+    };
+
+    cy.visit('/sign-up');
+    cy.get('input[name="email"]').type('error@error.com');
+    cy.get('input[name="password"]').type(newUser.password);
+    cy.get('input[name="confirmPassword"]').type('another password');
+    cy.get('button[aria-label="sign-up"]').click();
+    cy.get('h5').contains('Password and Confirm Password not match').should('exist');
+    cy.get('input[name="confirmPassword"]').clear();
+
+    // add confirmPassword correctly
+    cy.get('input[name="confirmPassword"]').type(newUser.password);
+    cy.get('button[aria-label="sign-up"]').click();
+
+    // add name correctly
+    cy.get('h5').contains('Failed to sign up').should('exist');
+    cy.get('input[name="email"]').clear();
+    cy.get('input[name="email"]').type(newUser.email);
+    cy.get('button[aria-label="sign-up"]').click();
+
+    // go to home (Dashboard page)
+    cy.location('pathname', { timeout: 2000 }).should('eq', '/');
   });
 });
