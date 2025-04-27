@@ -15,6 +15,7 @@ using `ASDF`:
 
 # Commands
 - To run project: `pnpm dev`
+- To run end to end tests: `pnpm test:e2e`
 
 ## APIs
 - All requests is based on: https://reqres.in/
