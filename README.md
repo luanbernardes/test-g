@@ -3,7 +3,7 @@
 ## Run With Docker
 - `docker compose build`
 - `docker compose up` to run the project
-- Access: http://localhost:3000/
+- Access: http://localhost:5173
 
 
 ## Run with ASDF
@@ -19,6 +19,6 @@ using `ASDF`:
 
 ## APIs
 - All requests is based on: https://reqres.in/
-  - success: 
+  - login success: 
     - email: `eve.holt@reqres.in`
     - password: `cityslicka`
